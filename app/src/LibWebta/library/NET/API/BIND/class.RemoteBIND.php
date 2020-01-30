@@ -379,7 +379,7 @@
 		* @return bool Operation status
 		* @todo Delete zonename.db file?
 		*/
-		public function DeleteZone($name)
+		public function DeleteZone($name, $saveconf = true)
 		{
 			
 			preg_match_all("/zone[^A-Za-z0-9]*({$name})[^{]+{[^;]+;([^A-Za-z0-9]+)file[^A-Za-z0-9;]*([A-Za-z0-9\.-]+)[^}]+};/msi", $this->Conf, $matches); 
