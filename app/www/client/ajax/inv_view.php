@@ -95,7 +95,7 @@
 				break;
 				
 			case "P":
-				$filter_sql = "purpose = '".mysql_escape_string($req_purpose)."'";
+				$filter_sql = "purpose = '".mysql_real_escape_string($req_purpose)."'";
 				break;
 				
 			case "O": 
@@ -113,8 +113,8 @@
 		"custom_id" => "customid"
 	);
 	
-	$sort = $req_sort ? key_exists($req_sort, $sort) ? $sort[$req_sort] : mysql_escape_string($req_sort) : $sort["dtcreated"];
-	$dir = $req_dir ? mysql_escape_string($req_dir) : "DESC";
+	$sort = $req_sort ? key_exists($req_sort, $sort) ? $sort[$req_sort] : mysql_real_escape_string($req_sort) : $sort["dtcreated"];
+	$dir = $req_dir ? mysql_real_escape_string($req_dir) : "DESC";
 	$sql .= " ORDER BY $sort $dir";
 		
 	$response["total"] = $db->GetOne(preg_replace('/\*/', 'COUNT(*)', $sql, 1));	

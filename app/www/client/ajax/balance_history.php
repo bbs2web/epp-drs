@@ -11,8 +11,8 @@
 		
 		$sql = "SELECT * FROM balance_history WHERE balanceid = '{$Balance->ID}'";
 
-		$sort = $req_sort ? mysql_escape_string($req_sort) : "operation_date";
-		$dir = $req_dir ? mysql_escape_string($req_dir) : "DESC";
+		$sort = $req_sort ? mysql_real_escape_string($req_sort) : "operation_date";
+		$dir = $req_dir ? mysql_real_escape_string($req_dir) : "DESC";
 		$sql .= " ORDER BY $sort $dir";
 		
 		$response["total"] = $db->GetOne(preg_replace('/\*/', 'COUNT(*)', $sql, 1));

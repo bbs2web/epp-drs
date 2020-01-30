@@ -25,7 +25,7 @@ class EppDrs_Api_Service20110217 extends EppDrs_Api_Service20100524 {
 		// Apply filter
 		if ($params["query"])
 		{
-			$query = mysql_escape_string($params["query"]);
+			$query = mysql_real_escape_string($params["query"]);
 			$sql .= " LEFT JOIN contacts_data as cd ON c.clid = cd.contactid";
 			$where[] = "(c.clid LIKE '%{$query}%' OR cd.`value` LIKE '%{$query}%')";
 		}

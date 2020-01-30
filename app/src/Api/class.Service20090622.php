@@ -27,7 +27,7 @@
 			
 			// Name filter
 			if ($params["query"])
-				$where[] = "CONCAT(name, '.', TLD) LIKE '%".mysql_escape_string($params["query"])."%'";
+				$where[] = "CONCAT(name, '.', TLD) LIKE '%".mysql_real_escape_string($params["query"])."%'";
 				
 			// Create data filter
 			if ($params["createDate"])
@@ -972,7 +972,7 @@
 			// Apply filter
 			if ($params["query"])
 			{
-				$query = mysql_escape_string($params["query"]);
+				$query = mysql_real_escape_string($params["query"]);
 				$sql .= " LEFT JOIN contacts_data as cd ON c.clid = cd.contactid";
 				$where[] = "(c.clid LIKE '%{$query}%' OR cd.`value` LIKE '%{$query}%')";
 			}

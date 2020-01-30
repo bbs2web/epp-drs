@@ -24,13 +24,13 @@
 
 	if ($req_query)
 	{
-		$filter = mysql_escape_string($req_query);
+		$filter = mysql_real_escape_string($req_query);
 		$sql .= " AND (clid IN (SELECT DISTINCT contactid FROM contacts_data WHERE value LIKE '%$filter%') or clid LIKE '%$filter%')";
 	}
 	
 	
-//	$sort = $req_sort ? mysql_escape_string($req_sort) : "module_name";
-//	$dir = $req_dir ? mysql_escape_string($req_dir) : "ASC";
+//	$sort = $req_sort ? mysql_real_escape_string($req_sort) : "module_name";
+//	$dir = $req_dir ? mysql_real_escape_string($req_dir) : "ASC";
 	$sql .= " ORDER BY tld ASC, module_name ASC, (SELECT value FROM contacts_data WHERE contacts_data.contactid = contacts.clid AND contacts_data.field = 'name') ASC, (SELECT value FROM contacts_data WHERE contacts_data.contactid = contacts.clid AND contacts_data.field = 'organization') ASC";
 	
 	

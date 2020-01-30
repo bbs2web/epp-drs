@@ -29,7 +29,7 @@
 	// Filter
 	if ($req_query)
 	{
-		$filter = mysql_escape_string($req_query);
+		$filter = mysql_real_escape_string($req_query);
 		foreach(array("login", "email") as $field)
 		{
 			$likes[] = "$field LIKE '%{$filter}%'";
@@ -42,8 +42,8 @@
 	(
 		"date_reg" => "dtregistered",
 	);	
-	$sort = $req_sort ? key_exists($req_sort, $sort_names) ? $sort_names[$req_sort] : mysql_escape_string($req_sort) : $sort_names["login"];
-	$dir = $req_dir ? mysql_escape_string($req_dir) : "ASC";
+	$sort = $req_sort ? key_exists($req_sort, $sort_names) ? $sort_names[$req_sort] : mysql_real_escape_string($req_sort) : $sort_names["login"];
+	$dir = $req_dir ? mysql_real_escape_string($req_dir) : "ASC";
 	$sql .= " ORDER BY $sort $dir";
 
 	// Total rows

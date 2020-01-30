@@ -153,7 +153,7 @@
 				
 				
 				//SQL
-				$filter = mysql_escape_string($filter);
+				$filter = mysql_real_escape_string($filter);
 				foreach($fields as $f)
 					$likes[] = "$f LIKE '%{$filter}%'";
 					

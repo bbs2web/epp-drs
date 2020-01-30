@@ -39,14 +39,14 @@
 	// Apply filter
 	if ($req_query)
 	{
-		$query = mysql_escape_string($req_query);
+		$query = mysql_real_escape_string($req_query);
 		$sql .= " LEFT JOIN contacts_data as cd ON c.clid = cd.contactid";
 		$where[] = "(c.clid LIKE '%{$query}%' OR cd.`value` LIKE '%{$query}%')";
 	}
 	$sql .= $where ? " WHERE ".join(" AND ", $where) : "";
 	
-	$sort = $req_sort ? mysql_escape_string($req_sort) : "clid";
-	$dir = $req_dir ? mysql_escape_string($req_dir) : "ASC";
+	$sort = $req_sort ? mysql_real_escape_string($req_sort) : "clid";
+	$dir = $req_dir ? mysql_real_escape_string($req_dir) : "ASC";
 	$sql .= " ORDER BY $sort $dir";
 
 

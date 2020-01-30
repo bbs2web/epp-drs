@@ -18,7 +18,7 @@
 
 	if ($req_query)
 	{
-	    $query = mysql_escape_string($req_query);
+	    $query = mysql_real_escape_string($req_query);
 	    $where[] = "(message LIKE '%{$query}%' OR transactionid LIKE '%{$query}%')";
 	}
 		

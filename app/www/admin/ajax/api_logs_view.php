@@ -29,7 +29,7 @@
 	
 	if ($req_query)
 	{
-		$query = mysql_escape_string($req_query);
+		$query = mysql_real_escape_string($req_query);
 		$where[] = "(action LIKE '%$query%' OR request LIKE '%$query%' OR response LIKE '%$query%')";
 	}
 	

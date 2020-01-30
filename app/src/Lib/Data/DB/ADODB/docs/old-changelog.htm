@@ -196,7 +196,7 @@
 <p> Move() and MoveLast() internals changed to support to support EOF and $this->fields 
   change. 
 <p> Added ADODB_FETCH_BOTH support to mssql. Thx to Angel Fradejas afradejas#mediafusion.es 
-<p> We now check if link resource exists before we run mysql_escape_string in 
+<p> We now check if link resource exists before we run mysql_real_escape_string in 
   qstr(). 
 <p> Before we flock in csv code, we check that it is not a http url. 
 <p><b>3.20 17 Feb 2003</b></p>

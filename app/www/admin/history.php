@@ -15,7 +15,7 @@
 		
 		if ($req_search && $req_search != '')
 		{
-			$search = mysql_escape_string($req_search);
+			$search = mysql_real_escape_string($req_search);
 			$sql .= " AND object LIKE '%{$search}%'";
 			$paging->AddURLFilter("search", $req_search);
 			$display["search"] = $req_search;
@@ -23,7 +23,7 @@
 		
 		if ($req_obj_filter && $req_obj_filter !="")
 		{
-			$obj = mysql_escape_string($req_obj_filter);
+			$obj = mysql_real_escape_string($req_obj_filter);
 			$sql .= " AND type = '{$obj}'";
 			$paging->AddURLFilter("obj_filter", $req_obj_filter);
 			$display["obj_filter"] = $req_obj_filter;
@@ -31,7 +31,7 @@
 
 		if ($req_op_filter && $req_op_filter !="")
 		{
-			$op = mysql_escape_string($req_op_filter);
+			$op = mysql_real_escape_string($req_op_filter);
 			$sql .= " AND operation = '{$op}'";
 			$paging->AddURLFilter("op_filter", $req_op_filter);
 			$display["op_filter"] = $req_op_filter;
