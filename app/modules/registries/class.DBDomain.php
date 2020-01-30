@@ -173,9 +173,9 @@ class DBDomain
 		
 		
 		// Normalize DB data
-		$row['start_date'] 	= strtotime($row['start_date']);
-		$row['end_date'] 	= strtotime($row['end_date']);
-		$row['dtTransfer'] 	= strtotime($row['dtTransfer']);
+		$row['start_date'] 	= (strtotime($row['start_date']) < 0 ? NULL : strtotime($row['start_date']));
+		$row['end_date'] 	= (strtotime($row['end_date']) < 0 ? NULL : strtotime($row['end_date']));
+		$row['dtTransfer'] 	= (strtotime($row['dtTransfer']) < 0 ? NULL : strtotime($row['dtTransfer']));
 		$row["islocked"] 	= (bool)$row["islocked"];
 		$row['managed_dns'] = (bool)$row['managed_dns'];
 
