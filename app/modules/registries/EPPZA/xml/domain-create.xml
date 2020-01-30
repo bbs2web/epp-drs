@@ -13,6 +13,7 @@
           </domain:hostAttr>
         </domain:ns>
         <domain:registrant>{registrant_id}</domain:registrant>
+        {contacts}
         <domain:authInfo>
           <domain:pw>{pw}</domain:pw>
         </domain:authInfo>
